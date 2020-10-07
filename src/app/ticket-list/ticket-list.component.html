@@ -1,0 +1,14 @@
+<h1>Tickets</h1>
+<button [disabled]="saving" [routerLink]="'tickets/new'">Create a ticket</button>
+
+<div *ngIf="loading">Loading...</div>
+
+<ul *ngIf="!loading" id="ticket-list">
+	<li *ngFor="let ticket of ticketList" class="ticket">
+		<input type="checkbox" [disabled]="saving" [checked]="ticket.completed" (click)="changeTicketStatus(ticket)"/>
+		<h2>
+			<a [routerLink]="'tickets/'+ticket.id">{{ticket.id}} - {{ ticket.description }}</a>
+		</h2>
+		<div class="user">{{ getUserNameForTicket(ticket) }}</div>
+	</li>
+</ul>

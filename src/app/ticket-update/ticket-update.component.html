@@ -1,0 +1,21 @@
+<a [routerLink]="''">Back</a>
+
+<h1>Nouveau ticket</h1>
+
+<div *ngIf="loading">Loading...</div>
+<form [formGroup]="ticketForm" *ngIf="!loading" (ngSubmit)="save()">
+	<div>
+		<label for="assignee">Assignee :</label>
+		<select id="assignee" formControlName="assignee">
+			<option value="">None</option>
+			<option *ngFor="let user of userList" value="{{user.id}}">{{ user.name }}</option>
+		</select>
+	</div>
+
+	<div>
+		<label for="description">Descrition</label>
+		<textarea id="description" name="description" formControlName="description"></textarea>
+	</div>
+
+	<input type="submit" [disabled]="saving">
+</form>

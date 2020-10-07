@@ -1,0 +1,17 @@
+<a [routerLink]="''">Back</a>
+
+<h1>Ticket detail</h1>
+
+<div *ngIf="ticket === null">Loading...</div>
+<div *ngIf="ticket !== null">
+	<h2>Number : {{ticket.id}}</h2>
+
+	<h3>Completed</h3>
+	<div>{{ ticket.completed ? 'Yes' : 'No' }}</div>
+
+	<h3>Assignee</h3>
+	<div>{{user.name}}</div>
+
+	<h3>Description</h3>
+	<div>{{ticket.description}}</div>
+</div>
